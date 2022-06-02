@@ -78,6 +78,11 @@ public class ReportCardProUI extends javax.swing.JFrame {
         btnPrint1.setText("Print");
 
         btnExit1.setText("Exit");
+        btnExit1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExit1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -287,6 +292,10 @@ public class ReportCardProUI extends javax.swing.JFrame {
     private void studentListComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_studentListComponentAdded
         
     }//GEN-LAST:event_studentListComponentAdded
+
+    private void btnExit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExit1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnExit1ActionPerformed
 
     /**
      * @param args the command line arguments
