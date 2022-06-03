@@ -4,6 +4,8 @@
  */
 package my.reportcardpro;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.ListModel;
 import my.studentreport.StudentReport;
@@ -14,10 +16,13 @@ import my.studentreport.StudentReport;
  */
 public class ReportCardProUI extends javax.swing.JFrame {
 
+    private List<Student> students;
+    
     /**
      * Creates new form ReportCardProUI
      */
     public ReportCardProUI() {
+        students = new ArrayList();
         initComponents();
     }
 
@@ -236,8 +241,15 @@ public class ReportCardProUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnOpenFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenFileActionPerformed
-        StudentReport sr = new StudentReport();
-        sr.setVisible(true);
+        int selectedIndex = studentList.getSelectedIndex();
+        
+        if (selectedIndex >= 0) {
+            Student student = students.get(selectedIndex);
+            
+            StudentReport sr = new StudentReport();
+            sr.setStudent(student);
+            sr.setVisible(true);
+        }
     }//GEN-LAST:event_btnOpenFileActionPerformed
 
     private void txtLastName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLastName1ActionPerformed
@@ -266,29 +278,22 @@ public class ReportCardProUI extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // add button
+        Student student = new Student(txtFirstName.getText(), txtLastName1.getText());
+        students.add(student);
+        
+        updateStudentList();
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void updateStudentList(){
         DefaultListModel model = new DefaultListModel();
         
-        String name = (txtFirstName.getText() + " " + txtLastName1.getText());
-        
-        String[] lastNames = new String[studentList.getModel().getSize()];
-        
-        String lastName = txtLastName1.getText();
-        
-        // re-add all the previous elements in the list to the "new" list
-        for (int i = 0; i < studentList.getModel().getSize(); i++) {
-            model.addElement(studentList.getModel().getElementAt(i));
+        for (Student student : students) {
+            model.addElement(student.name());
         }
         
         studentList.setModel(model);
-        
-        // add name to list
-        model.addElement(name);
-        
-        for (int i = 0; i < studentList.getModel().getSize(); i++) {
-            lastNames[i] = lastName;
-        }
-    }//GEN-LAST:event_btnAddActionPerformed
-
+    }
+    
     private void studentListComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_studentListComponentAdded
         
     }//GEN-LAST:event_studentListComponentAdded
