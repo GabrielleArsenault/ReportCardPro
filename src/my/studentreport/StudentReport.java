@@ -320,6 +320,8 @@ public class StudentReport extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExit2ActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
+       // press return then click x in the top right corner for the frame to close
+        
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_btnReturnActionPerformed
 
