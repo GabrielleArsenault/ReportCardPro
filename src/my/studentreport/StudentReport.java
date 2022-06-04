@@ -54,7 +54,7 @@ public class StudentReport extends javax.swing.JFrame {
         txtAverage = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnUpdateAverage = new javax.swing.JButton();
         btnReturn = new javax.swing.JButton();
 
         btnExit2.setText("Exit");
@@ -171,7 +171,7 @@ public class StudentReport extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtSubject3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txtMark3, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
+                        .addComponent(txtMark3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtSubject2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -186,9 +186,9 @@ public class StudentReport extends javax.swing.JFrame {
                             .addComponent(jLabel7))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtMark4, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                            .addComponent(txtMark4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, Short.MAX_VALUE)
                             .addComponent(txtAverage))))
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtMark1, txtMark2, txtMark3, txtMark4});
@@ -237,10 +237,10 @@ public class StudentReport extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Update Average");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdateAverage.setText("Update Average");
+        btnUpdateAverage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnUpdateAverageActionPerformed(evt);
             }
         });
 
@@ -260,7 +260,7 @@ public class StudentReport extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(btnUpdateAverage)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -277,7 +277,7 @@ public class StudentReport extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                    .addComponent(btnUpdateAverage)
                     .addComponent(btnSave)
                     .addComponent(jButton4)
                     .addComponent(btnReturn))
@@ -307,9 +307,15 @@ public class StudentReport extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField18ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnUpdateAverageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateAverageActionPerformed
+        float num1, num2, num3,num4, result;
+        num1 = Float.parseFloat(txtMark1.getText());
+        num2 = Float.parseFloat(txtMark2.getText());
+        num3 = Float.parseFloat(txtMark3.getText());
+        num4 = Float.parseFloat(txtMark4.getText());
+        result = Math.round((num1+num2+num3+num4)/4);
+        txtAverage.setText(String.valueOf(result));
+    }//GEN-LAST:event_btnUpdateAverageActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         
@@ -364,8 +370,8 @@ public class StudentReport extends javax.swing.JFrame {
     private javax.swing.JButton btnExit2;
     private javax.swing.JButton btnReturn;
     private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnUpdateAverage;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
