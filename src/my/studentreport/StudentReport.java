@@ -20,6 +20,8 @@ public class StudentReport extends javax.swing.JFrame {
      */
     public StudentReport() {
         initComponents();
+        
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -38,8 +40,6 @@ public class StudentReport extends javax.swing.JFrame {
         jTextField18 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtSubject1 = new javax.swing.JTextField();
@@ -50,12 +50,12 @@ public class StudentReport extends javax.swing.JFrame {
         txtMark2 = new javax.swing.JTextField();
         txtMark3 = new javax.swing.JTextField();
         txtMark4 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        lblAverage = new javax.swing.JLabel();
         txtAverage = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        lblStudentName = new javax.swing.JLabel();
+        btnPrint2 = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         btnUpdateAverage = new javax.swing.JButton();
-        btnReturn = new javax.swing.JButton();
 
         btnExit2.setText("Exit");
         btnExit2.addActionListener(new java.awt.event.ActionListener() {
@@ -108,10 +108,6 @@ public class StudentReport extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Student Report", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 1, 13))); // NOI18N
 
-        jLabel1.setText("Last Name");
-
-        jLabel2.setText("First Name");
-
         jLabel5.setText("Subject Names");
 
         jLabel6.setText("Marks");
@@ -142,7 +138,7 @@ public class StudentReport extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText("Average:");
+        lblAverage.setText("Average:");
 
         txtAverage.setEditable(false);
         txtAverage.addActionListener(new java.awt.event.ActionListener() {
@@ -150,6 +146,8 @@ public class StudentReport extends javax.swing.JFrame {
                 txtAverageActionPerformed(evt);
             }
         });
+
+        lblStudentName.setText("Student Name");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -159,15 +157,9 @@ public class StudentReport extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel5))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel6))))
+                        .addComponent(jLabel5)
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel6))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtSubject3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -183,25 +175,24 @@ public class StudentReport extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtSubject4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
+                            .addComponent(lblAverage))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtMark4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, Short.MAX_VALUE)
-                            .addComponent(txtAverage))))
+                            .addComponent(txtAverage)))
+                    .addComponent(lblStudentName))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtMark1, txtMark2, txtMark3, txtMark4});
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel5, jLabel7, txtSubject1, txtSubject2, txtSubject3, txtSubject4});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel5, lblAverage, txtSubject1, txtSubject2, txtSubject3, txtSubject4});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblStudentName)
+                .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
@@ -223,12 +214,12 @@ public class StudentReport extends javax.swing.JFrame {
                     .addComponent(txtMark4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
+                    .addComponent(lblAverage)
                     .addComponent(txtAverage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 8, Short.MAX_VALUE))
         );
 
-        jButton4.setText("Print");
+        btnPrint2.setText("Print");
 
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -244,13 +235,6 @@ public class StudentReport extends javax.swing.JFrame {
             }
         });
 
-        btnReturn.setText("Return");
-        btnReturn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReturnActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -258,16 +242,14 @@ public class StudentReport extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnUpdateAverage)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)
+                        .addComponent(btnPrint2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSave)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnReturn)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -279,8 +261,7 @@ public class StudentReport extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdateAverage)
                     .addComponent(btnSave)
-                    .addComponent(jButton4)
-                    .addComponent(btnReturn))
+                    .addComponent(btnPrint2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -318,18 +299,22 @@ public class StudentReport extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateAverageActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        student.getSubjects().get(0).setName(txtSubject1.getText());
+        student.getSubjects().get(0).setMark(Integer.valueOf(txtMark1.getText()));
         
+        student.getSubjects().get(1).setName(txtSubject2.getText());
+        student.getSubjects().get(1).setMark(Integer.valueOf(txtMark2.getText()));
+        
+        student.getSubjects().get(2).setName(txtSubject3.getText());
+        student.getSubjects().get(2).setMark(Integer.valueOf(txtMark3.getText()));
+        
+        student.getSubjects().get(3).setName(txtSubject4.getText());
+        student.getSubjects().get(3).setMark(Integer.valueOf(txtMark4.getText()));
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnExit2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExit2ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnExit2ActionPerformed
-
-    private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
-       // press return then click x in the top right corner for the frame to close
-        
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_btnReturnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -368,21 +353,19 @@ public class StudentReport extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit2;
-    private javax.swing.JButton btnReturn;
+    private javax.swing.JButton btnPrint2;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdateAverage;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField18;
+    private javax.swing.JLabel lblAverage;
+    private javax.swing.JLabel lblStudentName;
     private javax.swing.JTextField txtAverage;
     private javax.swing.JTextField txtMark1;
     private javax.swing.JTextField txtMark2;
@@ -396,6 +379,8 @@ public class StudentReport extends javax.swing.JFrame {
 
     public void setStudent(Student student) {
         this.student = student;
+        
+        lblStudentName.setText(student.name());
         
         txtSubject1.setText(student.getSubjects().get(0).getName());
         txtMark1.setText(String.valueOf(student.getSubjects().get(0).getMark()));
