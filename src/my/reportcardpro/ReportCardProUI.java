@@ -234,7 +234,15 @@ public class ReportCardProUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        String checklastName = txtLastName2.getText();
         
+        for(int j=0; j<students.size(); j++){
+            Student student = students.get(j);
+            
+              if(checklastName.equals(student.getLastName())){
+                  openStudentFile(student);
+              }
+        }
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnOpenFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenFileActionPerformed
@@ -242,12 +250,16 @@ public class ReportCardProUI extends javax.swing.JFrame {
         
         if (selectedIndex >= 0) {
             Student student = students.get(selectedIndex);
-            StudentReport sr = new StudentReport();
-            sr.setStudent(student);
-            sr.setVisible(true);
+            openStudentFile(student);
         }
     }//GEN-LAST:event_btnOpenFileActionPerformed
    
+    private void openStudentFile(Student student){
+        StudentReport sr = new StudentReport();
+        sr.setStudent(student);
+        sr.setVisible(true);
+    }
+    
     private void txtLastName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLastName1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLastName1ActionPerformed

@@ -5,6 +5,10 @@
 package my.studentreport;
 
 import java.io.File;
+import java.io.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JFrame;
 import my.reportcardpro.Student;
 
@@ -15,6 +19,8 @@ import my.reportcardpro.Student;
 public class StudentReport extends javax.swing.JFrame {
     private Student student;
     
+    public List<File> reportCards;
+    
     /**
      * Creates new form StudentReport
      */
@@ -22,6 +28,8 @@ public class StudentReport extends javax.swing.JFrame {
         initComponents();
         
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+        reportCards = new ArrayList<>();
     }
 
     /**
@@ -163,7 +171,7 @@ public class StudentReport extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtSubject3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txtMark3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, Short.MAX_VALUE))
+                        .addComponent(txtMark3, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtSubject2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -178,7 +186,7 @@ public class StudentReport extends javax.swing.JFrame {
                             .addComponent(lblAverage))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtMark4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, Short.MAX_VALUE)
+                            .addComponent(txtMark4, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                             .addComponent(txtAverage)))
                     .addComponent(lblStudentName))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -220,6 +228,11 @@ public class StudentReport extends javax.swing.JFrame {
         );
 
         btnPrint2.setText("Print");
+        btnPrint2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrint2ActionPerformed(evt);
+            }
+        });
 
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -316,6 +329,13 @@ public class StudentReport extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btnExit2ActionPerformed
 
+    private void btnPrint2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrint2ActionPerformed
+       
+    }//GEN-LAST:event_btnPrint2ActionPerformed
+
+    private void writeToFile() throws IOException {
+
+    }
     /**
      * @param args the command line arguments
      */
