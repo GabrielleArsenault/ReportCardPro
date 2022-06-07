@@ -7,7 +7,6 @@ package my.reportcardpro;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
-import javax.swing.ListModel;
 import my.studentreport.StudentReport;
 
 /**
@@ -81,6 +80,11 @@ public class ReportCardProUI extends javax.swing.JFrame {
         });
 
         btnPrint1.setText("Print");
+        btnPrint1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrint1ActionPerformed(evt);
+            }
+        });
 
         btnExit1.setText("Exit");
         btnExit1.addActionListener(new java.awt.event.ActionListener() {
@@ -137,7 +141,7 @@ public class ReportCardProUI extends javax.swing.JFrame {
                     .addComponent(btnPrint1)
                     .addComponent(btnExit1)
                     .addComponent(btnRemove))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Student", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 1, 13))); // NOI18N
@@ -234,12 +238,12 @@ public class ReportCardProUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        String checklastName = txtLastName2.getText();
+        String checklastName = txtLastName2.getText().toLowerCase();
         
         for(int j=0; j<students.size(); j++){
             Student student = students.get(j);
             
-              if(checklastName.equals(student.getLastName())){
+              if(checklastName.equals(student.getLastName().toLowerCase())){
                   openStudentFile(student);
               }
         }
@@ -302,6 +306,16 @@ public class ReportCardProUI extends javax.swing.JFrame {
     private void btnExit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExit1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnExit1ActionPerformed
+
+    private void btnPrint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrint1ActionPerformed
+        int selectedIndex = studentList.getSelectedIndex();
+        
+        if (selectedIndex >= 0) {
+            Student student = students.get(selectedIndex);
+            ReportCard reportCard = new ReportCard(student);
+            reportCard.writeToFile();
+        }
+    }//GEN-LAST:event_btnPrint1ActionPerformed
 
     /**
      * @param args the command line arguments

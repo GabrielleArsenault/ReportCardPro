@@ -4,13 +4,9 @@
  */
 package my.studentreport;
 
-import java.io.File;
-import java.io.*;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JFrame;
 import my.reportcardpro.Student;
+import my.reportcardpro.ReportCard;
 
 /**
  *
@@ -19,8 +15,6 @@ import my.reportcardpro.Student;
 public class StudentReport extends javax.swing.JFrame {
     private Student student;
     
-    public List<File> reportCards;
-    
     /**
      * Creates new form StudentReport
      */
@@ -28,8 +22,6 @@ public class StudentReport extends javax.swing.JFrame {
         initComponents();
         
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
-        reportCards = new ArrayList<>();
     }
 
     /**
@@ -302,16 +294,20 @@ public class StudentReport extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField18ActionPerformed
 
     private void btnUpdateAverageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateAverageActionPerformed
-        float num1, num2, num3,num4, result;
-        num1 = Float.parseFloat(txtMark1.getText());
-        num2 = Float.parseFloat(txtMark2.getText());
-        num3 = Float.parseFloat(txtMark3.getText());
-        num4 = Float.parseFloat(txtMark4.getText());
+        int num1, num2, num3,num4, result;
+        num1 = Integer.valueOf(txtMark1.getText());
+        num2 = Integer.valueOf(txtMark2.getText());
+        num3 = Integer.valueOf(txtMark3.getText());
+        num4 = Integer.valueOf(txtMark4.getText());
         result = Math.round((num1+num2+num3+num4)/4);
-        txtAverage.setText(String.valueOf(result));
+        txtAverage.setText(String.valueOf(result) + "%");
     }//GEN-LAST:event_btnUpdateAverageActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        saveStudent();
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void saveStudent(){
         student.getSubjects().get(0).setName(txtSubject1.getText());
         student.getSubjects().get(0).setMark(Integer.valueOf(txtMark1.getText()));
         
@@ -323,19 +319,19 @@ public class StudentReport extends javax.swing.JFrame {
         
         student.getSubjects().get(3).setName(txtSubject4.getText());
         student.getSubjects().get(3).setMark(Integer.valueOf(txtMark4.getText()));
-    }//GEN-LAST:event_btnSaveActionPerformed
-
+    }
     private void btnExit2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExit2ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnExit2ActionPerformed
 
     private void btnPrint2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrint2ActionPerformed
+       ReportCard reportCard = new ReportCard(student);
        
+       saveStudent();
+       
+       reportCard.writeToFile();
     }//GEN-LAST:event_btnPrint2ActionPerformed
 
-    private void writeToFile() throws IOException {
-
-    }
     /**
      * @param args the command line arguments
      */
