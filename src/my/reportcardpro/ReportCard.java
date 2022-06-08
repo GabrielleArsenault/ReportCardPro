@@ -7,6 +7,7 @@ package my.reportcardpro;
 
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,7 +27,7 @@ public class ReportCard {
     }
     
     public void writeToFile() {
-         try (PrintStream out = new PrintStream ("ReportCard.txt");){
+         try (PrintStream out = new PrintStream (student.getLastName() + ".txt");){
             
             out.println(student.name());
             out.println();

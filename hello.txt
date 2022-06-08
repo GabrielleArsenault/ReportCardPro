@@ -1,6 +1,6 @@
  hello
 
-math: 10%
+science: 0%
 
 : 0%
 
@@ -9,4 +9,4 @@ math: 10%
 : 0%
 
 
-Average: 2%
+Average: 0%
