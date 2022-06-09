@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package my.studentreport;
 
 import javax.swing.JFrame;
@@ -12,6 +8,8 @@ import my.reportcardpro.ReportCard;
  *
  * @author gabi
  */
+
+// jframe where the student's subject information can be edited by the user (not including name)
 public class StudentReport extends javax.swing.JFrame {
     private Student student;
     
@@ -21,6 +19,7 @@ public class StudentReport extends javax.swing.JFrame {
     public StudentReport() {
         initComponents();
         
+        // when the x in the top right corner is clicked only the StudentReport jframe closes
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
@@ -274,32 +273,43 @@ public class StudentReport extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtSubject4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSubject4ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtSubject4ActionPerformed
 
     private void txtMark2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMark2ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtMark2ActionPerformed
 
     private void txtMark3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMark3ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtMark3ActionPerformed
 
     private void txtAverageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAverageActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtAverageActionPerformed
 
     private void jTextField18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField18ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextField18ActionPerformed
 
     private void btnUpdateAverageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateAverageActionPerformed
+        // performed when update average is clicked
+        
+        // variables to store int values of the subject marks
         int num1, num2, num3,num4, result;
+        
+        // retrive int values of the strings
+        
         num1 = Integer.valueOf(txtMark1.getText());
+        
         num2 = Integer.valueOf(txtMark2.getText());
+        
         num3 = Integer.valueOf(txtMark3.getText());
+        
         num4 = Integer.valueOf(txtMark4.getText());
+        
         result = Math.round((num1+num2+num3+num4)/4);
+        
         txtAverage.setText(String.valueOf(result) + "%");
     }//GEN-LAST:event_btnUpdateAverageActionPerformed
 

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package my.reportcardpro;
 
 import java.util.ArrayList;
@@ -9,8 +5,6 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import my.studentreport.StudentReport;
-import my.reportcardpro.ReportCard;
-import my.reportcardpro.Student;
 
 /**
  *
@@ -281,10 +275,15 @@ public class ReportCardProUI extends javax.swing.JFrame {
             openStudentFile(student);
         }
     }//GEN-LAST:event_btnOpenFileActionPerformed
-   
+    
     private void openStudentFile(Student student){
+        // create new StudentReport 
         StudentReport sr = new StudentReport();
+        
+        // assign student to the report
         sr.setStudent(student);
+        
+        // set the StudentReport jframe visible to the user
         sr.setVisible(true);
     }
     
@@ -322,12 +321,19 @@ public class ReportCardProUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void updateStudentList(){
+        // creates / "updates" the list of students
+        
+        // make new list model
         DefaultListModel model = new DefaultListModel();
         
+        // for every student that still exists in the arraylist
         for (Student student : students) {
+            
+            // add student's name to the list
             model.addElement(student.name());
         }
         
+        // set the student list to the new model
         studentList.setModel(model);
     }
     
