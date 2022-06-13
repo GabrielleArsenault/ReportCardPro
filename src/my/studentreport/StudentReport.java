@@ -32,12 +32,6 @@ public class StudentReport extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnExit2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField18 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -55,53 +49,6 @@ public class StudentReport extends javax.swing.JFrame {
         btnPrint2 = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         btnUpdateAverage = new javax.swing.JButton();
-
-        btnExit2.setText("Exit");
-        btnExit2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExit2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setText("Return");
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Average", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 1, 13))); // NOI18N
-
-        jLabel8.setText("Current Average:");
-
-        jTextField18.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField18ActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Calculate");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1))
-                .addContainerGap(167, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -288,10 +235,6 @@ public class StudentReport extends javax.swing.JFrame {
         
     }//GEN-LAST:event_txtAverageActionPerformed
 
-    private void jTextField18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField18ActionPerformed
-        
-    }//GEN-LAST:event_jTextField18ActionPerformed
-
     private void btnUpdateAverageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateAverageActionPerformed
         // performed when update average is clicked
         
@@ -313,32 +256,42 @@ public class StudentReport extends javax.swing.JFrame {
         txtAverage.setText(String.valueOf(result) + "%");
     }//GEN-LAST:event_btnUpdateAverageActionPerformed
 
+    //This button is used to save the updated information                                        
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         saveStudent();
     }//GEN-LAST:event_btnSaveActionPerformed
 
+     //This function is used to save the student’s information
     private void saveStudent(){
+        //Saves subject 1
+        //Saves mark of subject 1
         student.getSubjects().get(0).setName(txtSubject1.getText());
         student.getSubjects().get(0).setMark(Integer.valueOf(txtMark1.getText()));
         
+        //Saves subject 2
+        //Saves mark of subject 2
         student.getSubjects().get(1).setName(txtSubject2.getText());
         student.getSubjects().get(1).setMark(Integer.valueOf(txtMark2.getText()));
         
+        //Saves subject 3
+        //Saves mark of subject 3
         student.getSubjects().get(2).setName(txtSubject3.getText());
         student.getSubjects().get(2).setMark(Integer.valueOf(txtMark3.getText()));
         
+        //Saves subject 4
+        //Saves mark of subject 4
         student.getSubjects().get(3).setName(txtSubject4.getText());
         student.getSubjects().get(3).setMark(Integer.valueOf(txtMark4.getText()));
     }
-    private void btnExit2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExit2ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btnExit2ActionPerformed
-
+     //This button is used to print the file of the student                                          
     private void btnPrint2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrint2ActionPerformed
+       //Creates a report card for the student
        ReportCard reportCard = new ReportCard(student);
        
+       //Saves the student information
        saveStudent();
        
+       //Writes the information to the text file
        reportCard.writeToFile();
     }//GEN-LAST:event_btnPrint2ActionPerformed
 
@@ -378,18 +331,12 @@ public class StudentReport extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnExit2;
     private javax.swing.JButton btnPrint2;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdateAverage;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField18;
     private javax.swing.JLabel lblAverage;
     private javax.swing.JLabel lblStudentName;
     private javax.swing.JTextField txtAverage;
@@ -403,20 +350,30 @@ public class StudentReport extends javax.swing.JFrame {
     private javax.swing.JTextField txtSubject4;
     // End of variables declaration//GEN-END:variables
 
+    //This is used to set the information of the student in the text file
     public void setStudent(Student student) {
         this.student = student;
         
+        //Sets name to student file
         lblStudentName.setText(student.name());
         
+        //Sets subject 1 name to student file
+        //Sets mark of subject 1 to student file
         txtSubject1.setText(student.getSubjects().get(0).getName());
         txtMark1.setText(String.valueOf(student.getSubjects().get(0).getMark()));
         
+        //Sets subject 2 name to student file
+        //Sets mark of subject 2 to student file
         txtSubject2.setText(student.getSubjects().get(1).getName());
         txtMark2.setText(String.valueOf(student.getSubjects().get(1).getMark()));
         
+        //Sets subject 3 name to student file
+        //Sets mark of subject 3 to student file
         txtSubject3.setText(student.getSubjects().get(2).getName());
         txtMark3.setText(String.valueOf(student.getSubjects().get(2).getMark()));
         
+        //Sets subject 4 name to student file
+        //Sets mark of subject 4 to student file
         txtSubject4.setText(student.getSubjects().get(3).getName());
         txtMark4.setText(String.valueOf(student.getSubjects().get(3).getMark()));
     }

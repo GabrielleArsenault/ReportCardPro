@@ -245,31 +245,44 @@ public class ReportCardProUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //This button is used to search for a student by last name
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        //Takes the lower case version of the last name so that case won’t matter
         String lastName2 = txtLastName2.getText().toLowerCase();
         
+         //Puts the last name as a variable
         String checklastName = lastName2;
         
         if (lastName2.equals("")){
+            //If there is no last name entered print the following message
             JOptionPane.showMessageDialog(null, "Please enter a last name to search");
         }
         else{
-          for(int j=0; j<students.size(); j++){
-            Student student = students.get(j);
+            //If there is a name entered proceed
+          for(int j = 0; j < students.size(); j++){
+              //Used to search the list of students
+              
+              //Gets the information of the student that was searched for
+              Student student = students.get(j);
             
               if(checklastName.equals(student.getLastName().toLowerCase())){
+                  //If a student with the last name entered is found then their file is opened
                   openStudentFile(student);
               }
               else{
+                //If a student of the entered last name is not found then the following message is shown
                 JOptionPane.showMessageDialog(null, "Please enter a valid last name");  
               }
             }
         }
     }//GEN-LAST:event_btnSearchActionPerformed
 
+    //This button is used to open the file of a student                                            
     private void btnOpenFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenFileActionPerformed
+        //Gets the index of the student selected from the list
         int selectedIndex = studentList.getSelectedIndex();
         
+        //If the index exists then the file corresponding file is opened
         if (selectedIndex >= 0) {
             Student student = students.get(selectedIndex);
             openStudentFile(student);
@@ -295,29 +308,42 @@ public class ReportCardProUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFirstNameActionPerformed
 
+    //This button is used to remove a student from the list                                         
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+        //Gets the index of the student the user wishes to remove
         int selectedIndex = studentList.getSelectedIndex();
         
+        //If the index exists then the information of the student corresponding to that index is removed
         if (selectedIndex >= 0) {
             students.remove(selectedIndex);
             
+            //Once the student is removed the list needs to be updated with correct index numbers
             updateStudentList();
         }
     }//GEN-LAST:event_btnRemoveActionPerformed
 
+    //This button is used to add a student to the list                                       
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+       //Gets the first name of the student the user wished to add
        String firstName = txtFirstName.getText();
+       
+       //Gets the last name of the student the user wishes to add
        String lastName = txtLastName1.getText();
        
        if (firstName.equals("") || lastName.equals("")){
+           //If either the first or last name is not entered then the following message is shown
            JOptionPane.showMessageDialog(null, "Please enter  first and last name");
        }
        else{
-        Student student = new Student(firstName, lastName);
-        students.add(student);
+            //If both a last name and first name are entered then proceed
+            
+            //Creates a student by the entered first and last name and adds them to the list
+            Student student = new Student(firstName, lastName);
+            students.add(student);
         
-        updateStudentList();
-       }
+            //Once the student is added the list needs to be updated with the correct index numbers
+            updateStudentList();
+        }
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void updateStudentList(){
@@ -341,24 +367,40 @@ public class ReportCardProUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_studentListComponentAdded
 
+     //This button is used to exit the program                                         
     private void btnExit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExit1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnExit1ActionPerformed
 
+    //This button is used to print the file of one student                                          
     private void btnPrint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrint1ActionPerformed
+        //Gets the index of the selected student
         int selectedIndex = studentList.getSelectedIndex();
         
+        //If the index exists proceed
         if (selectedIndex >= 0) {
+            //Gets index
             Student student = students.get(selectedIndex);
+            
+            //Creates a report card for the student as a text file
             ReportCard reportCard = new ReportCard(student);
+            
+            //Writes the information to a text file
             reportCard.writeToFile();
         }
     }//GEN-LAST:event_btnPrint1ActionPerformed
 
+     //This button is used to print all student files                                            
     private void btnPrintAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintAllActionPerformed
+        //Loops through the list of students
         for (int i = 0; i < students.size(); i++) {
+           //Gets the student at that index
            Student student = students.get(i);
+           
+           //Creates a report card for the student
            ReportCard reportCard = new ReportCard(student);
+           
+           //Writes the information of the student to a text file
            reportCard.writeToFile();
         }
     }//GEN-LAST:event_btnPrintAllActionPerformed
