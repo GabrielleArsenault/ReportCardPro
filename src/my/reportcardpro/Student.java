@@ -23,7 +23,7 @@ public class Student {
         this.lastName = lastName;
         this.subjects = new ArrayList();
         
-        // creates student subjects, more can be added if there are more than 4 courses
+        // creates list of student subjects, more can be added if there are more than 4 courses
         
         subjects.add(new Subject());
         subjects.add(new Subject());
