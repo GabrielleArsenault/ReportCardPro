@@ -1,7 +1,11 @@
 package my.reportcardpro;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import my.studentreport.StudentReport;
@@ -19,7 +23,43 @@ public class ReportCardProUI extends javax.swing.JFrame {
      */
     public ReportCardProUI() {
         students = new ArrayList();
+        
+        // get file to read in
+        File input = new File("Students.txt");
+        
+        try (Scanner file = new Scanner(input)) {
+            while (file.hasNext()) {
+                // gets first and last names from file
+                String firstName = file.nextLine();
+                String lastName = file.nextLine();
+
+                // create new student with first and last name
+                Student student = new Student(firstName, lastName);
+                
+                // add student to list
+                students.add(student);
+
+                // for each subject, read in subject name and mark and assign the values to the subject
+                for(int i = 0; i < 4; i++){
+                    String subjectName = file.nextLine();
+                    int mark = Integer.valueOf(file.nextLine());
+
+                    Subject subject = student.getSubjects().get(i);
+                    subject.setName(subjectName);
+                    subject.setMark(mark);
+                }
+            }
+        } catch (IOException e) {
+             
+            // in case an error occurs, the string message will appear as a pop up window
+             
+            JOptionPane.showMessageDialog(null, "Error occurred, please try again");
+        }
+        
         initComponents();
+        
+        // create student list
+        updateStudentList();
     }
 
     /**
@@ -51,6 +91,14 @@ public class ReportCardProUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Select Student", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 1, 13))); // NOI18N
 
@@ -404,6 +452,39 @@ public class ReportCardProUI extends javax.swing.JFrame {
            reportCard.writeToFile();
         }
     }//GEN-LAST:event_btnPrintAllActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        
+        // write to txt file Students
+        try (PrintStream out = new PrintStream ("Students.txt");){
+            
+            // for each student in the list
+            for (int i = 0; i < students.size(); i++){
+                // get student at specified index
+                Student student = students.get(i);
+                
+                // print out the student first and last name
+                out.println(student.getFirstName());
+                out.println(student.getLastName());
+                
+                // for each subject print out the name and mark
+                for(Subject subject : student.getSubjects()){
+                    out.println(subject.getName());
+                    out.println(subject.getMark()); 
+                }
+            }
+            
+         } catch (IOException e) {
+             
+            // in case an error occurs, the string message will appear as a pop up window
+             
+            JOptionPane.showMessageDialog(null, "Error occurred, please try again");
+        }
+    }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
