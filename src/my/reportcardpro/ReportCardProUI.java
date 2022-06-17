@@ -295,32 +295,35 @@ public class ReportCardProUI extends javax.swing.JFrame {
 
     //This button is used to search for a student by last name
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // get last name from text box
+        String lastName2 = txtLastName2.getText();
+        
         //Takes the lower case version of the last name so that case won’t matter
-        String lastName2 = txtLastName2.getText().toLowerCase();
+        String checklastName = lastName2.toLowerCase();
         
-         //Puts the last name as a variable
-        String checklastName = lastName2;
-        
-        if (lastName2.equals("")){
+        if (lastName2.isEmpty()){
             //If there is no last name entered print the following message
             JOptionPane.showMessageDialog(null, "Please enter a last name to search");
         }
-        else{
-            //If there is a name entered proceed
-          for(int j = 0; j < students.size(); j++){
-              //Used to search the list of students
-              
-              //Gets the information of the student that was searched for
-              Student student = students.get(j);
+        else {
+            // If there is a name entered proceed
             
-              if(checklastName.equals(student.getLastName().toLowerCase())){
-                  //If a student with the last name entered is found then their file is opened
-                  openStudentFile(student);
-              }
-              else{
-                //If a student of the entered last name is not found then the following message is shown
-                JOptionPane.showMessageDialog(null, "Please enter a valid last name");  
-              }
+            boolean studentFound = false;
+
+            for (Student student : students) {
+                //Go through the list of students
+
+                if (checklastName.equals(student.getLastName().toLowerCase())) {
+                    // If a student with the last name entered is found then their file is opened
+                    openStudentFile(student);
+                    studentFound = true;
+                    break;
+                }
+            }
+            
+            if (!studentFound) {
+                // If a student of the entered last name is not found then the following message is shown
+                JOptionPane.showMessageDialog(null, "Please enter a valid last name");
             }
         }
     }//GEN-LAST:event_btnSearchActionPerformed
